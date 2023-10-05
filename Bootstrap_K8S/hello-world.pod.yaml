@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+  labels:
+    name: hello-world
+    app: hello-world # add a label app hello-world for service to find it
+spec:
+  containers:
+    - name: hello-world
+      image: samber/hello-world-nodejs
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports: # Expose port 8080
+        - containerPort: 8080
+      env:
+        - name: PORT # Env PORT=8080
+          value: "8080"
